@@ -1,8 +1,10 @@
 CREATE DATABASE greater;
 
+USE greater;
+
 CREATE TABLE client (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    email varchar(50) NOT NULL,
+    email varchar(255) NOT NULL,
     password varchar(25) NOT NULL,
     preferences TEXT NOT NULL,
     client_type char(1) NOT NULL
@@ -19,7 +21,7 @@ VALUES
     )
 
 CREATE TABLE interest (
-    studId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    studId INT NOT NULL,
     listId INT NOT NULL,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     interest_type CHAR(1) NOT NULL,
@@ -41,20 +43,20 @@ CREATE TABLE listing (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name varchar(100) NOT NULL,
     description TEXT NOT NULL,
-    latitude FLOAT(8, 6) NOT NULL,
-    longitude FLOAT(9, 6) NOT NULL,
+    latitude FLOAT NOT NULL,
+    longitude FLOAT NOT NULL,
     price_in_eur FLOAT(5, 2) NOT NULL,
     amenities TEXT NOT NULL,
     room_type varchar(255) NOT NULL,
     host_id INT NOT NULL,
-    bathroom FLOAT NOT NULL,
+    bathroom TEXT NOT NULL,
     cancellation_policy varchar(255) NOT NULL,
     rating FLOAT NOT NULL,
-    for_students BOOLEAN NOT NULL DEFAULT TRUE,
+    for_students BOOLEAN NOT NULL, 
     trusted_tick BOOLEAN NOT NULL DEFAULT FALSE,
     priority varchar(255) NOT NULL,
     review_tot INT NOT NULL,
-    review_avg FLOAT NOT NULL,
+    review_avg INT NOT NULL,
     FOREIGN KEY (host_id) REFERENCES company(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3; 
 
@@ -77,7 +79,7 @@ VALUES
         'true',
         'true',
         127,
-        4.89
+        1
     )
 
 CREATE TABLE company (
@@ -89,8 +91,8 @@ CREATE TABLE company (
     city varchar(20) NOT NULL,
     country varchar(50) NOT NULL,
     review_tot INT NOT NULL,
-    reviews_avg FLOAT NOT NULL,
-    additional TEXT NOT NULL,
+    reviews_avg INT NOT NULL,
+    additional TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3; 
 
 INSERT INTO 
@@ -102,8 +104,9 @@ VALUES
         'Rua de Santo Estevão',
         '1100-615',
         'Lisboa',
+        'Portugal',
         127,
-        4.82
+        1
     )
 
 -- CREATE TABLE website_data (
