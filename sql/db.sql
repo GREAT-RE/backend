@@ -6,7 +6,7 @@ CREATE TABLE client (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     email varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
-    preferences TEXT NOT NULL,
+    preferences TEXT,
     client_type char(1) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
 
