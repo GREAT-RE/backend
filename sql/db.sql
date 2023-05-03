@@ -6,7 +6,7 @@ CREATE TABLE client (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     firstName varchar(255) NOT NULL,
     lastName varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
+    email varchar(255) UNIQUE NOT NULL,
     password varchar(255) NOT NULL,
     preferences TEXT,
     client_type char(1) NOT NULL
