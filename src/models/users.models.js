@@ -2,13 +2,13 @@ const database = require("../../db-config");
 
 const create = (user) => {
   return database
-    .query("INSERT INTO users SET ?", user)
+    .query("INSERT INTO client SET ?", user)
     .then(([results]) => results);
 };
 
 const findOneEmail = (email) => {
     return database
-      .query("SELECT * FROM users WHERE email = ?", email)
+      .query("SELECT * FROM client WHERE email = ?", email)
       .then(([results]) => results);
   };
 
