@@ -5,7 +5,7 @@ USE greater;
 CREATE TABLE client (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     email varchar(255) NOT NULL,
-    password varchar(25) NOT NULL,
+    password varchar(255) NOT NULL,
     preferences TEXT NOT NULL,
     client_type char(1) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
