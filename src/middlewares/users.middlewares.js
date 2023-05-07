@@ -1,4 +1,5 @@
 const Users = require("../models/users.models");
+const jwt = require("jsonwebtoken")
 
 const createNewUser = (req, res, next) => {
   const { email } = req.body;

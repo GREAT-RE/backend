@@ -1,6 +1,9 @@
 const Users = require("../models/users.models");
 const { hashPassword, verifyPassword } = require("../helpers/password");
 const jwt = require("jsonwebtoken");
+const randomString = require("randomstring")
+
+const {sendEmail} = require('../helpers/sendEmail')
 
 const createUser = (req, res) => {
   const { password } = req.body;
@@ -48,6 +51,39 @@ const loginUser = (req, res) => {
     });
 };
 
+const changePassword = (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+  const { userId, email } = req.payload;
+};
+
+const forgetPassword = (req, res) => {
+  //console.log(req.body)
+  //console.log(req.user)
+  const {email} = req.user
+  const temporaryPassword = randomString.generate();
+
+console.log(temporaryPassword)
+
+  hashPassword(temporaryPassword).then((hashPassword) => {
+  
+    let subject = "Password changed"
+    sendEmail(email, subject, temporaryPassword)
+    /*Users.changePassword(email, hashPassword)
+    .then(results => {
+      if(results.affectedRows > 0) {
+
+        //res.status(200).send("Your password has been changed")
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Cannot change the password");
+    });
+  })*/
+
+
+}
+
 // const forgetPassword = (req, res) => {
 //   // console.log(req.body)
 //   // console.log(req.user)
@@ -77,5 +113,7 @@ const loginUser = (req, res) => {
 module.exports = {
   createUser,
   loginUser,
+  changePassword,
+  forgetPassword
   // forgetPassword,
 };
