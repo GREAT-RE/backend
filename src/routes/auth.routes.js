@@ -6,7 +6,7 @@ authRouter.post("/sign-up", createNewUser, Users.createUser)
 
 authRouter.post("/login", checkEmail, Users.loginUser)
 
-authRouter.post("/change-password", verifyToken, Users.changePassword)
+// authRouter.post("/change-password", verifyToken, Users.changePassword)
 
 authRouter.post("/forget-password", checkEmail, Users.forgetPassword)
 

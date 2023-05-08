@@ -7,10 +7,9 @@ const {sendEmail} = require('../helpers/sendEmail')
 
 const createUser = (req, res) => {
   const { password } = req.body;
-  //* hash the password
-  // console.log(password)
+
   hashPassword(password).then((hashedPassword) => {
-    // console.log(hashPassword)
+
     const user = {
      ...req.body,
       password: hashedPassword,
@@ -51,69 +50,33 @@ const loginUser = (req, res) => {
     });
 };
 
-const changePassword = (req, res) => {
-  const { currentPassword, newPassword } = req.body;
-  const { userId, email } = req.payload;
-};
-
 const forgetPassword = (req, res) => {
-  //console.log(req.body)
-  //console.log(req.user)
+
   const {email} = req.user
   const temporaryPassword = randomString.generate();
 
-console.log(temporaryPassword)
-
   hashPassword(temporaryPassword).then((hashPassword) => {
   
-    let subject = "Password changed"
+    let subject = "Temporary Password - Home in Lx"
+
     sendEmail(email, subject, temporaryPassword)
-    /*Users.changePassword(email, hashPassword)
-    .then(results => {
-      if(results.affectedRows > 0) {
 
-        //res.status(200).send("Your password has been changed")
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send("Cannot change the password");
-    });
-  })*/
+    Users.changePassword(email, hashPassword)
+      .then(results => {
+        if(results.affectedRows > 0) {
 
-
+          res.status(200).send("A temporary Password have been send to your email.")
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Cannot change the password");
+      });
+  })
 }
-
-// const forgetPassword = (req, res) => {
-//   // console.log(req.body)
-//   // console.log(req.user)
-//   const { email } = req.user;
-//   const temporaryPassword = randomString.generate();
-
-//   console.log(temporaryPassword);
-
-//   hashPassword(temporaryPassword).then((hashPassword) => {
-//     // console.log(hashPassword)
-
-//     Users.changePassword(email, hashPassword)
-//       .then((results) => {
-//         if (results.affectedRows > 0) {
-//           let subject = "Password changed";
-//           sendEmail(email, subject, temporaryPassword);
-//           res.status(200).send("An email has been sent with the new password");
-//         }
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//         res.status(500).send("can't change the password");
-//       });
-//   });
-// };
 
 module.exports = {
   createUser,
   loginUser,
-  changePassword,
   forgetPassword
-  // forgetPassword,
 };

@@ -1,4 +1,5 @@
 const mailer = require('./mailer');
+require("dotenv").config();
 const {passwordReset} = require('./emailTemplate')
 
 const sendEmail = (receiver, subject, temporaryPassword) => {
@@ -7,7 +8,7 @@ const sendEmail = (receiver, subject, temporaryPassword) => {
 
             console.log(result)
             const config ={
-            from: 'amanda-barata_student2023@wilder.school',
+            from: process.env.SMTP_USER,
             to: receiver,
             subject: subject,
             text: result,
@@ -15,12 +16,12 @@ const sendEmail = (receiver, subject, temporaryPassword) => {
 
         console.log(config)
 
-        /*mailer.sendMail(
+        mailer.sendMail(
             config,
             (err, info) => {
                 if(err) console.log(err);
                 else console.log(info);
-            });*/
+        });
 
         };
 
