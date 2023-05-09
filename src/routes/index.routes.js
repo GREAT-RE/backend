@@ -1,9 +1,11 @@
-// const dbRouter = require("./db.routes")
+const hostRouter = require("./hosts.routes");
+const listingRouter = require("./listings.routes");
 
-// const setUpRoutes = (server) => {
-//     server.use("/db", dbRouter)
-// }
+const setUpRoutes = (app) => {
+  app.use("/company", hostRouter);
+  app.use("/listing", listingRouter);
+};
 
-// module.exports ={
-//     setUpRoutes
-// }
+module.exports = {
+  setUpRoutes,
+};
