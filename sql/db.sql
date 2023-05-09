@@ -1,4 +1,3 @@
-
 CREATE TABLE client (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     firstName varchar(255) NOT NULL,
@@ -75,3 +74,7 @@ CREATE TABLE listing (
 -- VALUES 
 --     (
 --     )
+    
+
+    
+

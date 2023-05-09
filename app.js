@@ -1,13 +1,9 @@
 const express = require("express");
 require("dotenv").config();
-const cors = require("cors")
+const cors = require("cors");
 const app = express();
 const port = process.env.APP_PORT ?? 8000;
-const {setUpRoutes} = require("./src/routes/index.routes")
-
-const test = (req, res) => {
-  res.send("Hello World");
-};
+const { setUpRoutes } = require("./src/routes/index.routes");
 
 app.use(express.json());
 
@@ -17,9 +13,13 @@ app.use(
   })
 );
 
-setUpRoutes(app)
+app.get("/", (req, res) => {
+  res.send("Welcome to HomeIn Lx Server");
+});
 
-app.get("/", test);
+// app.use("/company", hostRouter)
+// app.use("/listing", listingRouter)
+setUpRoutes(app);
 
 app.listen(port, (err) => {
   if (err) {

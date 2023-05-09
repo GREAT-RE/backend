@@ -1,9 +1,9 @@
-const dbRouter = require("./db.routes")
+// const dbRouter = require("./db.routes")
 
-const setUpRoutes = (server) => {
-    server.use("/db", dbRouter)
-}
+// const setUpRoutes = (server) => {
+//     server.use("/db", dbRouter)
+// }
 
-module.exports ={
-    setUpRoutes
-}
+// module.exports ={
+//     setUpRoutes
+// }
