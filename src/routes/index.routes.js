@@ -1,9 +1,18 @@
+const hostRouter = require("./hosts.routes");
+const listingRouter = require("./listings.routes");
+const dbRouter = require("./db.routes");
 const authRouter = require("./auth.routes");
 
-const setUpRoutes = (server) => {
-    server.use("/auth", authRouter)
-}
+const setUpRoutes = (app) => {
+  app.use("/company", hostRouter);
+  app.use("/listing", listingRouter);
+  app.use("/db", dbRouter);
+  app.use("/auth", authRouter)
+
+};
 
 module.exports = {
-    setUpRoutes
-}
+  setUpRoutes,
+};
+
+
