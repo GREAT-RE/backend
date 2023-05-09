@@ -4,7 +4,8 @@ CREATE TABLE client (
     lastName varchar(255) NOT NULL,
     email varchar(255) UNIQUE NOT NULL,
     password varchar(255) NOT NULL,
-    preferences TEXT,
+    newsletter BOOLEAN NOT NULL,
+    privacy_policies BOOLEAN NOT NULL DEFAULT TRUE,
     client_type char(1) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
@@ -25,7 +26,7 @@ CREATE TABLE company (
 CREATE TABLE listing (
     listing_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id INT NOT NULL,
-    picture_url BLOB NOT NULL,
+    picture_url LONGTEXT NOT NULL,
     name varchar(255) NOT NULL,
     description TEXT NOT NULL,
     latitude FLOAT NOT NULL,

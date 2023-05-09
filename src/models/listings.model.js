@@ -10,20 +10,20 @@ const getListingsByHost = (listing) => {
     .then(([results]) => results);
 };
 
-const edit = (id, body) => {
-  return database
-    .query("UPDATE listing SET ? WHERE id = ? ", [body, id])
-    .then(([results]) => results);
-};
+// const edit = (id, body) => {
+//   return database
+//     .query("UPDATE listing SET ? WHERE id = ? ", [body, id])
+//     .then(([results]) => results);
+// };
 
-const deleteListing = (id) => {
-  return database
-    .query("DELETE FROM listing WHERE id  = ?", id)
-    .then(([results]) => results);
-};
+// const deleteListing = (id) => {
+//   return database
+//     .query("DELETE FROM listing WHERE id  = ?", id)
+//     .then(([results]) => results);
+// };
 module.exports = {
   getAll,
   getListingsByHost,
-  edit,
-  deleteListing,
+  //   edit,
+  //   deleteListing,
 };

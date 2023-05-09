@@ -12,16 +12,14 @@ hostRouter.get("/:id", HostsController.getHostsById);
 
 //* as a user, I want to be able to register as an host.
 
-hostRouter.post("/", HostsController.createHost);
+// hostRouter.post("/", HostsController.createHost);
 
 //* as a user, I want to be able to edit my host account.
 
-hostRouter.put("/:id", HostsController.updateHost);
+// hostRouter.put("/:id", HostsController.updateHost);
 
 //* as a user, I want to be able to delete my host account.
 
-hostRouter.delete("/:id", HostsController.deleteHost);
+// hostRouter.delete("/:id", HostsController.deleteHost);
 
-module.exports = {
-  hostRouter,
-};
+module.exports = hostRouter;
