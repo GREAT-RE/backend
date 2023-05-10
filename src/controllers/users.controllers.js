@@ -14,7 +14,6 @@ const createUser = (req, res) => {
      ...req.body,
       password: hashedPassword,
     };
-    console.log(user);
     //* use the model to create a new user
     Users.create(user)
       .then((results) => {

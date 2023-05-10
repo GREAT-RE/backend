@@ -6,7 +6,6 @@ const sendEmail = (receiver, subject, temporaryPassword) => {
 
     const result = passwordReset(receiver, temporaryPassword)
 
-            console.log(result)
             const config ={
             from: process.env.SMTP_USER,
             to: receiver,
@@ -14,7 +13,6 @@ const sendEmail = (receiver, subject, temporaryPassword) => {
             text: result,
         }
 
-        console.log(config)
 
         mailer.sendMail(
             config,

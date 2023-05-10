@@ -9,6 +9,15 @@ const ListingController = require("../controllers/listings.controller");
 
 listingRouter.get("/", ListingController.getAllListings);
 
+listingRouter.get("/popular", ListingController.getPopularListing);
+
+listingRouter.get("/universities", ListingController.getAllUniversities);
+
+listingRouter.get("/universities/:id", ListingController.getListingByDistance);
+
+listingRouter.get("/:id", ListingController.getListingById);
+
+
 //* as a user, I want to be able to edit a listing.
 
 // listingRouter.put("/:id", ListingController.editListing);

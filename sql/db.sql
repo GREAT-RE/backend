@@ -43,39 +43,18 @@ CREATE TABLE listing (
     priority varchar(255) NOT NULL,
     number_of_reviews INT NOT NULL,
     review_scores_value FLOAT NOT NULL,
+    distance_1 FLOAT NOT NULL,
+    distance_2 FLOAT NOT NULL,
+    distance_3 FLOAT NOT NULL,    
+    distance_4 FLOAT NOT NULL,
+    distance_5 FLOAT NOT NULL,    
     FOREIGN KEY (host_id) REFERENCES company(host_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
--- CREATE TABLE interest (
---     studId INT NOT NULL,
---     listId INT NOT NULL,
---     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     interest_type CHAR(1) NOT NULL,
---     email_sent BOOLEAN NOT NULL DEFAULT TRUE
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
--- INSERT INTO 
---     interest (studId, listId, timestamp, interest_type, email_sent)
--- VALUES
---     (
---         543211,
---         499001,
---         '2023-05-04 09:58:30',
---         'e',
---         true
---     )
 
--- CREATE TABLE website_data (
---     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---     ip varchar(255) NOT NULL,
---     page_heatmap TEXT/JSON NOT NULL,
---     filters TEXT/JSON NOT NULL,
--- )
--- INSERT INTO 
---     website_data (ip, page_heatmap, filters)
--- VALUES 
---     (
---     )
-    
-
-    
-
+CREATE TABLE universities (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    latitude FLOAT NOT NULL,
+    longitude FLOAT NOT NULL
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
