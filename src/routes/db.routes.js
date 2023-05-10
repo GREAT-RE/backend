@@ -7,4 +7,6 @@ dbRouter.post("/company", dbController.createCompany);
 //* http://localhost:8000/db/listing
 dbRouter.post("/listing", dbController.createListing);
 
+dbRouter.post("/university", dbController.createUniversities);
+
 module.exports = dbRouter;

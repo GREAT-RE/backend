@@ -12,7 +12,14 @@ const createListing = (listing) => {
     .then(([results]) => results);
 };
 
+const createUniversity = (university) => {
+  return database
+    .query("INSERT INTO universities SET ?", university)
+    .then(([results]) => results);
+}
+
 module.exports = {
   createCompany,
   createListing,
+  createUniversity
 };
