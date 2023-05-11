@@ -1,22 +1,40 @@
 const Listings = require("../models/listings.model");
 
 const getAllListings = (req, res) => {
-  // if (req.query.host_id) {
-  //   const { host_id } = req.query;
-  //   Listings.getListingsByHost(host_id)
-  //     .then((results) => {
-  //       if (results !== null && results.length > 0) {
-  //         res.status(200).send(results);
-  //       } else {
-  //         res.status(404).send(`Listings from host ID ${host_id} not found`);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //       res.status(500).send("Error retrieving listings from database");
-  //     });
-  // } else {
-  Listings.getAll()
+  const where = [];
+  if (req.query.room_type != null) {
+    where.push({
+      column: "room_type",
+      value: req.query.room_type,
+      operator: "=",
+    });
+  }
+  if (req.query.min_price != null) {
+    where.push({
+      column: "price_in_eur",
+      value: req.query.min_price,
+      operator: ">=",
+    });
+  }
+
+  if (req.query.max_price != null) {
+    where.push({
+      column: "price_in_eur",
+      value: req.query.max_price,
+      operator: "<=",
+    });
+  }
+  if (req.query.amenities != null) {
+    const amenities = JSON.parse(req.query.amenities);
+    amenities.forEach((amenity) => {
+      where.push({
+        column: "amenities",
+        value: `%${amenity}%`,
+        operator: "LIKE",
+      });
+    });
+  }
+  Listings.getAll(where)
     .then((results) => {
       if (results !== null && results.length > 0) {
         res.status(200).send(results);
@@ -28,7 +46,6 @@ const getAllListings = (req, res) => {
       console.error(error);
       res.status(500).send("Error retrieving listings from database");
     });
-  // }
 };
 
 // const editListing = (req, res) => {
@@ -132,3 +149,19 @@ module.exports = {
   //   editListing,
   //   deleteHostListing,
 };
+
+  // if (req.query.host_id) {
+  //   const { host_id } = req.query;
+  //   Listings.getListingsByHost(host_id)
+  //     .then((results) => {
+  //       if (results !== null && results.length > 0) {
+  //         res.status(200).send(results);
+  //       } else {
+  //         res.status(404).send(`Listings from host ID ${host_id} not found`);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //       res.status(500).send("Error retrieving listings from database");
+  //     });
+  // } else {

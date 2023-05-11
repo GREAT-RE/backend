@@ -1,8 +1,21 @@
 const database = require("../../db-config");
 
-const getAll = () => {
-  return database.query("SELECT * FROM listing").then(([results]) => results);
-};
+const getAll = (where = []) => {
+  let query = ("SELECT * FROM listing")
+  const values = [];
+
+  if (where.length > 0) {
+    query += " WHERE " + where.reduce(
+      (sql, { column, operator }, index) =>
+        `${sql} ${index === 0 ? "" : "AND"} ${column} ${operator} ?`,
+      ""
+    );
+    values.push(...where.map(({ value }) => value));
+  }
+
+  return database.query(query, values)
+      .then(([results]) => results)
+}
 
 const getListingsByHost = (listing) => {
   return database
