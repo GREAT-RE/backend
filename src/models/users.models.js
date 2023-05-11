@@ -7,22 +7,29 @@ const create = (user) => {
 };
 
 const findOneEmail = (email) => {
-    return database
-      .query("SELECT * FROM client WHERE email = ?", email)
-      .then(([results]) => results);
-  };
+  return database
+    .query("SELECT * FROM client WHERE email = ?", email)
+    .then(([results]) => results);
+};
 
-  const changePassword = (email, hashedPassword) => {
-    return database
-      .query("UPDATE client SET password = ? WHERE email = ?", [
-        hashedPassword,
-        email,
-      ])
-      .then(([results]) => results);
-  };
+const changePassword = (email, hashedPassword) => {
+  return database
+    .query("UPDATE client SET password = ? WHERE email = ?", [
+      hashedPassword,
+      email,
+    ])
+    .then(([results]) => results);
+};
 
-  module.exports = {
-    create, 
-    findOneEmail,
-    changePassword
-  }
+const findById = (id) => {
+  return database
+    .query("SELECT * FROM client WHERE id = ?", id)
+    .then(([results]) => results);
+};
+
+module.exports = {
+  create,
+  findOneEmail,
+  changePassword,
+  findById,
+};

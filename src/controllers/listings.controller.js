@@ -27,6 +27,7 @@ const getAllListings = (req, res) => {
   if (req.query.amenities != null) {
     const amenities = JSON.parse(req.query.amenities);
     amenities.forEach((amenity) => {
+      console.log(amenity)
       where.push({
         column: "amenities",
         value: `%${amenity}%`,

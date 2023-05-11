@@ -4,7 +4,7 @@ CREATE TABLE client (
     lastName varchar(255) NOT NULL,
     email varchar(255) UNIQUE NOT NULL,
     password varchar(255) NOT NULL,
-    newsletter BOOLEAN NOT NULL,
+    newsletter BOOLEAN NOT NULL DEFAULT VALUE FALSE,
     privacy_policies BOOLEAN NOT NULL DEFAULT TRUE,
     client_type char(1) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;

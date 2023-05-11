@@ -74,8 +74,26 @@ const forgetPassword = (req, res) => {
   })
 }
 
+const authenticateToken = (req, res) => {
+    const { sub } = req.payload;
+    Users.findById(sub)
+      .then((user) => {
+        if (user[0] != null && user.length > 0) {
+          delete user[0].password;
+          res.status(200).send(user[0]);
+        } else {
+          res.status(404).send("Forbidden Request");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+}
+
 module.exports = {
   createUser,
   loginUser,
-  forgetPassword
+  forgetPassword,
+  authenticateToken
 };
