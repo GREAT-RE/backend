@@ -1,27 +1,27 @@
 [
     {
         "name": "Instituto Superior Técnico",
-        "latitude": 38.73587050068756, 
-        "longitude": -9.137758899999998
+        "lat": 38.73587050068756, 
+        "lng": -9.137758899999998
     },
     {
         "name": "Universidade de Lisboa",
-        "latitude": 38.752997388604165, 
-        "longitude": -9.15615784232904
+        "lat": 38.752997388604165, 
+        "lng": -9.15615784232904
     },
     {
         "name": "Universidade Lusófona",
-        "latitude": 38.758205427250616,
-        "longitude": -9.153103929779997
+        "lat": 38.758205427250616,
+        "lng": -9.153103929779997
     },
     {
         "name": "Universidade Católica",
-        "latitude": 38.75475286327174,
-        "longitude": -9.166370430966516
+        "lat": 38.75475286327174,
+        "lng": -9.166370430966516
     },
     {
         "name": "ISCTE - Instituto Universitário de Lisboa",
-        "latitude": 38.748009576748856, 
-        "longitude": -9.153403301222516
+        "lat": 38.748009576748856, 
+        "lng": -9.153403301222516
     }
 ]

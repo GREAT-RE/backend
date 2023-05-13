@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
 const app = express();
-const port = process.env.APP_PORT ?? 8000;
+const port = process.env.APP_PORT ?? 5000;
 const { setUpRoutes } = require("./src/routes/index.routes");
 
 app.use(express.json());

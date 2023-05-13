@@ -4,7 +4,7 @@ CREATE TABLE client (
     lastName varchar(255) NOT NULL,
     email varchar(255) UNIQUE NOT NULL,
     password varchar(255) NOT NULL,
-    newsletter BOOLEAN NOT NULL DEFAULT VALUE FALSE,
+    newsletter BOOLEAN NOT NULL DEFAULT FALSE,
     privacy_policies BOOLEAN NOT NULL DEFAULT TRUE,
     client_type char(1) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
@@ -29,8 +29,8 @@ CREATE TABLE listing (
     picture_url LONGTEXT NOT NULL,
     name varchar(255) NOT NULL,
     description TEXT NOT NULL,
-    latitude FLOAT NOT NULL,
-    longitude FLOAT NOT NULL,
+    lat FLOAT NOT NULL,
+    lng FLOAT NOT NULL,
     price_in_eur FLOAT NOT NULL,
     amenities TEXT NOT NULL,
     room_type varchar(255) NOT NULL,
@@ -55,6 +55,6 @@ CREATE TABLE listing (
 CREATE TABLE universities (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name varchar(255) NOT NULL,
-    latitude FLOAT NOT NULL,
-    longitude FLOAT NOT NULL
+    lat FLOAT NOT NULL,
+    lng FLOAT NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
