@@ -17,6 +17,8 @@ listingRouter.get("/universities/:id", ListingController.getListingByDistance);
 
 listingRouter.get("/:id", ListingController.getListingById);
 
+listingRouter.put("/:id", ListingController.editListing);
+
 
 //* as a user, I want to be able to edit a listing.
 

@@ -49,18 +49,19 @@ const getAllListings = (req, res) => {
     });
 };
 
-// const editListing = (req, res) => {
-//   const { id } = req.params;
-//   const body = req.body;
-//   Listings.edit(id, body)
-//     .then((result) => {
-//       res.status(200).send(`Listing with id ${id} successfully updated`);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//       res.status(500).send("Error retrieving listings from database");
-//     });
-// };
+const editListing = (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+
+  Listings.edit(id, body)
+    .then((result) => {
+      res.status(200).send(`Listing with id ${id} successfully updated`);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error retrieving listings from database");
+    });
+};
 
 // const deleteHostListing = (req, res) => {
 //   const { id } = req.params;
@@ -146,8 +147,8 @@ module.exports = {
   getListingById,
   getPopularListing,
   getAllUniversities,
-  getListingByDistance
-  //   editListing,
+  getListingByDistance,
+    editListing,
   //   deleteHostListing,
 };
 

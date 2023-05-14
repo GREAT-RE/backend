@@ -47,7 +47,8 @@ CREATE TABLE listing (
     distance_2 FLOAT NOT NULL,
     distance_3 FLOAT NOT NULL,    
     distance_4 FLOAT NOT NULL,
-    distance_5 FLOAT NOT NULL,    
+    distance_5 FLOAT NOT NULL,  
+    formatted_address VARCHAR(255),
     FOREIGN KEY (host_id) REFERENCES company(host_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 

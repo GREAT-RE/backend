@@ -14,5 +14,3 @@ const setUpRoutes = (app) => {
 module.exports = {
   setUpRoutes,
 };
-
-

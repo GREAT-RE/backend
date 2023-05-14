@@ -47,11 +47,11 @@ const getDistance = (id) =>{
   .then(([result]) => result);
 }
 
-// const edit = (id, body) => {
-//   return database
-//     .query("UPDATE listing SET ? WHERE id = ? ", [body, id])
-//     .then(([results]) => results);
-// };
+const edit = (id, body) => {
+  return database
+    .query("UPDATE listing SET ? WHERE id = ? ", [body, id])
+    .then(([results]) => results);
+};
 
 // const deleteListing = (id) => {
 //   return database
@@ -64,7 +64,7 @@ module.exports = {
   getListingById,
   getPopular,
   getUniversities,
-  getDistance
-  //   edit,
+  getDistance,
+    edit,
   //   deleteListing,
 };
