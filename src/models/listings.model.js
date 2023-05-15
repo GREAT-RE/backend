@@ -1,21 +1,44 @@
 const database = require("../../db-config");
 
 const getAll = (where = []) => {
-  let query = ("SELECT * FROM listing")
+  let query = "SELECT * FROM listing";
   const values = [];
 
   if (where.length > 0) {
-    query += " WHERE " + where.reduce(
-      (sql, { column, operator }, index) =>
-        `${sql} ${index === 0 ? "" : "AND"} ${column} ${operator} ?`,
-      ""
-    );
+    query +=
+      " WHERE " +
+      where.reduce(
+        (sql, { column, operator }, index) =>
+          `${sql} ${index === 0 ? "" : "AND"} ${column} ${operator} ?`,
+        ""
+      );
     values.push(...where.map(({ value }) => value));
   }
 
-  return database.query(query, values)
-      .then(([results]) => results)
-}
+  return database.query(query, values).then(([results]) => results);
+};
+
+const getAllInOrder = (where = [], universities) => {
+  let query = "SELECT * FROM listing";
+  const values = [];
+
+  if (where.length > 0) {
+    query +=
+      " WHERE" +
+      where.reduce(
+        (sql, { column, operator }, index) =>
+          `${sql} ${index === 0 ? "" : "AND"} ${column} ${operator} ?`,
+        ""
+      );
+    values.push(...where.map(({ value }) => value));
+  }
+
+  if(universities){
+    query += ` ORDER BY distance_${universities} ASC`
+  }
+
+  return database.query(query, values).then(([results]) => results);
+};
 
 const getListingsByHost = (listing) => {
   return database
@@ -40,12 +63,10 @@ const getUniversities = () => {
     .then(([results]) => results);
 };
 
-const getDistance = (id) =>{
-  let query =`SELECT * FROM listing ORDER BY distance_${id} ASC`
-  return database
-  .query(query)
-  .then(([result]) => result);
-}
+const getDistance = (id) => {
+  let query = `SELECT * FROM listing ORDER BY distance_${id} ASC`;
+  return database.query(query).then(([result]) => result);
+};
 
 const edit = (id, body) => {
   return database
@@ -65,6 +86,7 @@ module.exports = {
   getPopular,
   getUniversities,
   getDistance,
-    edit,
+  edit,
+  getAllInOrder,
   //   deleteListing,
 };
