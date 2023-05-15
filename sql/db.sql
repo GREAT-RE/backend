@@ -58,4 +58,13 @@ CREATE TABLE universities (
     name varchar(255) NOT NULL,
     lat FLOAT NOT NULL,
     lng FLOAT NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+
+
+CREATE TABLE interest (
+    studId INT NOT NULL,
+    listId INT NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    interest_type BOOLEAN NOT NULL,
+    email_sent BOOLEAN NOT NULL DEFAULT TRUE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
