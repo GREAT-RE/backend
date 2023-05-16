@@ -10,7 +10,6 @@ const setUpRoutes = (app) => {
   app.use("/db", dbRouter);
   app.use("/auth", authRouter)
   app.use("/interest", interestRouter)
-
 };
 
 module.exports = {

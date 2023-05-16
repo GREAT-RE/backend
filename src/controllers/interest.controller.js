@@ -1,4 +1,7 @@
 const Interest = require("../models/interest.model");
+const Users = require("../models/users.models");
+
+const {sendEnquire} = require('../helpers/sendEmail')
 
 const addNewRow = (req, res) => {
   // console.log(req.body)
@@ -61,7 +64,29 @@ const getAllInterestByUser = (req, res) => {
     });
 };
 
+const sendEnquireRequest = (req, res) => {
+    const { id } = req.params;
+    Users.findById(id)
+    .then((user) => {
+      if (user[0] != null && user.length > 0) {
+        delete user[0].password;
+
+        let subject = `${user[0].email} request enquire - Home in Lx`
+
+        sendEnquire(user[0], subject)
+        // res.status(200).send(user[0]);
+      } else {
+        res.status(404).send("Forbidden Request");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+}
+
 module.exports = {
   addNewRow,
   getAllInterestByUser,
+  sendEnquireRequest
 };

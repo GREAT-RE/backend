@@ -9,10 +9,25 @@ const passwordReset = (email, newPassword) => {
     For security reasons, please change your temporary password after logging in.
     
     Thanks!
-    Test APP TEAM
+    Greater Team
     `
 }
 
+const enquire = (user) => {
+    return `
+    Hello,
+    
+    First Name: ${user.firstName},
+    Last Name: ${user.lastName},
+    Email: ${user.email}
+    
+    Thanks!
+    Greater Team
+    `
+}
+
+
 module.exports = {
-    passwordReset
+    passwordReset,
+    enquire
 }
