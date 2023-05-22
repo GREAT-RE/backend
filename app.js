@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://home-in-lx.onrender.com/*",
+    origin: "https://home-in-lx.onrender.com",
   })
 );
 
