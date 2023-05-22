@@ -7,9 +7,15 @@ const { setUpRoutes } = require("./src/routes/index.routes");
 
 app.use(express.json());
 
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//   })
+// );
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://home-in-lx.onrender.com/",
   })
 );
 
